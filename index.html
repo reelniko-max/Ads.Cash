@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ADS CASH - Premium, modern, futuristic glassmorphism earning website. Watch daily campaigns and claim rewards instantly.">
+  <meta name="keywords" content="earning, ads cash, daily reward, wallet, withdraw, fintech, glassmorphism">
+  <title>ADS CASH - Futuristic Earning Dashboard</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="app-container">
+    
+    <!-- --- HEADER PANEL --- -->
+    <header class="glass-panel header-panel">
+      <div class="header-left">
+        <div class="logo-container" id="app-logo">AC</div>
+        <div class="header-title-wrapper">
+          <h1 id="main-header-title">Welcome to Ads Cash</h1>
+          <div class="online-users-badge">
+            <span class="online-pulse"></span>
+            <span id="online-counter">1,432 Online</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <!-- Wallet display in header -->
+        <div class="header-wallet">
+          <div class="wallet-icon-wrapper">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+          <div class="wallet-header-info">
+            <span>Balance</span>
+            <span class="balance-value" id="header-balance">$0.00</span>
+          </div>
+        </div>
+        
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button class="action-btn" id="notif-btn" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge-dot"></span>
+          </button>
+          
+          <div class="profile-badge" id="profile-trigger" title="User Profile">
+            <div class="avatar-wrapper" id="profile-avatar">U</div>
+            <span class="profile-name" id="profile-name-display">Guest User</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- --- MAIN DASHBOARD GRID --- -->
+    <div class="dashboard-grid">
+      
+      <!-- Left Content: Stats, Daily Bonus, and Ad Grid -->
+      <main class="main-content">
+        
+        <!-- Stats Widgets -->
+        <section class="stats-container">
+          <div class="glass-panel stat-card balance-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-vault"></i>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Available Balance</span>
+              <span class="stat-value" id="stats-balance">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="glass-panel stat-card watched-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Total Ads Watched</span>
+              <span class="stat-value" id="stats-watched">0 / 15</span>
+            </div>
+          </div>
+          
+          <div class="glass-panel stat-card earnings-stat">
+            <div class="stat-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Total Earnings</span>
+              <span class="stat-value" id="stats-earnings">$0.00</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Daily Bonus Banner -->
+        <section class="glass-panel daily-bonus-panel" id="daily-bonus-section">
+          <div class="daily-header">
+            <div class="daily-title">
+              <i class="fa-solid fa-gift"></i>
+              <h3>Daily Login Bonus</h3>
+            </div>
+            <span class="bonus-amount-badge">+$0.50</span>
+          </div>
+          <div class="daily-content">
+            <p class="daily-desc" id="daily-bonus-status-text">Claim your daily allowance to boost your available balance. Refreshes every 24 hours.</p>
+            <button class="daily-btn" id="claim-daily-btn">
+              <i class="fa-solid fa-coins"></i>
+              <span id="daily-btn-text">Claim Bonus</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Ads Card Grid -->
+        <section class="main-content">
+          <div class="ads-section-header">
+            <h2>Campaign Missions</h2>
+            <div class="mission-reset-timer" title="Missions reset cooldown">
+              <i class="fa-solid fa-hourglass-half"></i>
+              <span>Reset in: <strong id="mission-reset-countdown">02h 00m 00s</strong></span>
+            </div>
+          </div>
+          
+          <!-- Ad cards grid container -->
+          <div class="ads-grid" id="campaign-ads-grid">
+            <!-- Loading Skeletons - Will be replaced by dynamic cards in JS -->
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-thumb"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-btn"></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Right Sidebar: Wallet holographic card, withdraw form, upload section, referral program -->
+      <aside class="sidebar-content">
+        
+        <!-- Interactive holographic debit card representation -->
+        <div class="holo-card-wrapper" id="card-wrap-hover">
+          <div class="holo-card" id="credit-card-view">
+            <div class="card-top">
+              <span class="card-logo">ADS CASH</span>
+              <div class="card-chip"></div>
+            </div>
+            <div class="card-middle">
+              <span class="card-balance-label">Available Balance</span>
+              <div class="card-balance-val" id="card-balance-display">$0.00</div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-holder">
+                <span class="label">Card Holder</span>
+                <span class="val" id="card-holder-display">Guest User</span>
+              </div>
+              <span class="card-type">Premium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Withdraw Panel -->
+        <div class="glass-panel withdraw-panel">
+          <div class="panel-title">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>Request Payout</span>
+          </div>
+          
+          <div class="progress-header">
+            <span class="progress-label">Withdrawal Goal (Min. $10)</span>
+            <div class="progress-values">
+              <span class="current" id="progress-val-current">$0.00</span>
+              <span>/ $10.00</span>
+            </div>
+          </div>
+          
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="withdraw-progress-bar"></div>
+          </div>
+
+          <button class="withdraw-btn" id="submit-withdraw-btn" disabled>
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Withdraw Money</span>
+          </button>
+        </div>
+
+        <!-- User profile inputs for customized card -->
+        <div class="glass-panel form-panel">
+          <div class="panel-title">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Identity Details</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="username-input">Full Name</label>
+            <input type="text" id="username-input" class="form-input" placeholder="e.g. John Doe" value="">
+          </div>
+
+          <div class="form-group">
+            <label for="email-input">Email Address</label>
+            <input type="email" id="email-input" class="form-input" placeholder="e.g. john@example.com" value="">
+          </div>
+
+          <!-- Drag and Drop Verification Screenshot Upload -->
+          <div class="form-group" style="margin-top: 18px; margin-bottom: 0;">
+            <label>Verify Task Screenshot</label>
+            
+            <div class="upload-area" id="screenshot-dropzone">
+              <div class="upload-overlay" id="upload-progress-overlay">
+                <div class="loader-spinner"></div>
+                <div class="loader-text">Analyzing file...</div>
+              </div>
+              
+              <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+              <div class="upload-text">
+                <span>Click to upload</span> or drag and drop
+              </div>
+              <div class="upload-limit">PNG, JPG, or JPEG up to 5MB</div>
+              <input type="file" id="screenshot-file-input" class="file-input" accept="image/png, image/jpeg, image/jpg">
+            </div>
+
+            <!-- Upload preview widget -->
+            <div class="preview-container" id="upload-preview-card">
+              <div class="preview-info">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="preview-name" id="uploaded-filename">screenshot.png</span>
+              </div>
+              <button class="remove-file-btn" id="remove-uploaded-file" title="Remove image">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referral Program -->
+        <div class="glass-panel referral-panel">
+          <div class="panel-title">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Affiliate Rewards</span>
+          </div>
+          <p class="referral-desc">Earn 10% commission on your network's ad revenue! Share your custom referral link below:</p>
+          <div class="referral-input-group">
+            <input type="text" class="referral-link" id="ref-link-field" value="https://adscash.io/ref/guest482" readonly>
+            <button class="copy-btn" id="copy-ref-link-btn">Copy</button>
+          </div>
+        </div>
+
+        <!-- Live Activity feed -->
+        <div class="glass-panel activities-panel">
+          <div class="panel-title">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Live Network Activity</span>
+          </div>
+          <div class="activity-list" id="activity-feed-container">
+            <!-- Items populated by JS -->
+          </div>
+        </div>
+
+    <!-- --- FOOTER WARNING NOTICE --- -->
+    <footer class="glass-panel warning-footer" style="animation: slide-up 0.8s ease;">
+      <div class="warning-header">
+        <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+        <h3>Withdrawal Policy Notice</h3>
+      </div>
+      <div class="warning-body">
+        <p>Users must remain active on the platform for at least 12 days before becoming eligible for withdrawals.</p>
+        <p>Multiple accounts are strictly prohibited. Any user found creating or using multiple accounts may have their account suspended and all earnings may be permanently forfeited.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
