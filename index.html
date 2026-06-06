@@ -7,23 +7,20 @@
   <meta name="keywords" content="earning, ads cash, daily reward, wallet, withdraw, fintech, glassmorphism">
   <title>ADS CASH - Futuristic Earning Dashboard</title>
   
-  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
   
-  <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script src="https://pl29659818.effectivecpmnetwork.com/9d/1b/58/9d1b5855ec20c998260b65862263bd5e.js"></script>
 </head>
 <body>
 
-  <!-- Floating Particle Canvas -->
   <canvas id="particle-canvas"></canvas>
 
   <div class="app-container">
     
-    <!-- --- HEADER PANEL --- -->
     <header class="glass-panel header-panel">
       <div class="header-left">
         <div class="logo-container" id="app-logo">AC</div>
@@ -37,7 +34,6 @@
       </div>
       
       <div class="header-right">
-        <!-- Wallet display in header -->
         <div class="header-wallet">
           <div class="wallet-icon-wrapper">
             <i class="fa-solid fa-wallet"></i>
@@ -48,7 +44,6 @@
           </div>
         </div>
         
-        <!-- Header Actions -->
         <div class="header-actions">
           <button class="action-btn" id="notif-btn" title="Notifications">
             <i class="fa-solid fa-bell"></i>
@@ -63,13 +58,10 @@
       </div>
     </header>
 
-    <!-- --- MAIN DASHBOARD GRID --- -->
     <div class="dashboard-grid">
       
-      <!-- Left Content: Stats, Daily Bonus, and Ad Grid -->
       <main class="main-content">
         
-        <!-- Stats Widgets -->
         <section class="stats-container">
           <div class="glass-panel stat-card balance-stat">
             <div class="stat-icon">
@@ -102,7 +94,6 @@
           </div>
         </section>
 
-        <!-- Daily Bonus Banner -->
         <section class="glass-panel daily-bonus-panel" id="daily-bonus-section">
           <div class="daily-header">
             <div class="daily-title">
@@ -120,7 +111,6 @@
           </div>
         </section>
 
-        <!-- Ads Card Grid -->
         <section class="main-content">
           <div class="ads-section-header">
             <h2>Campaign Missions</h2>
@@ -130,9 +120,7 @@
             </div>
           </div>
           
-          <!-- Ad cards grid container -->
           <div class="ads-grid" id="campaign-ads-grid">
-            <!-- Loading Skeletons - Will be replaced by dynamic cards in JS -->
             <div class="skeleton-card">
               <div class="skeleton-thumb"></div>
               <div class="skeleton-text"></div>
@@ -174,10 +162,8 @@
 
       </main>
 
-      <!-- Right Sidebar: Wallet holographic card, withdraw form, upload section, referral program -->
       <aside class="sidebar-content">
         
-        <!-- Interactive holographic debit card representation -->
         <div class="holo-card-wrapper" id="card-wrap-hover">
           <div class="holo-card" id="credit-card-view">
             <div class="card-top">
@@ -198,7 +184,6 @@
           </div>
         </div>
 
-        <!-- Withdraw Panel -->
         <div class="glass-panel withdraw-panel">
           <div class="panel-title">
             <i class="fa-solid fa-building-columns"></i>
@@ -223,7 +208,6 @@
           </button>
         </div>
 
-        <!-- User profile inputs for customized card -->
         <div class="glass-panel form-panel">
           <div class="panel-title">
             <i class="fa-solid fa-user-gear"></i>
@@ -240,7 +224,6 @@
             <input type="email" id="email-input" class="form-input" placeholder="e.g. john@example.com" value="">
           </div>
 
-          <!-- Drag and Drop Verification Screenshot Upload -->
           <div class="form-group" style="margin-top: 18px; margin-bottom: 0;">
             <label>Verify Task Screenshot</label>
             
@@ -258,7 +241,6 @@
               <input type="file" id="screenshot-file-input" class="file-input" accept="image/png, image/jpeg, image/jpg">
             </div>
 
-            <!-- Upload preview widget -->
             <div class="preview-container" id="upload-preview-card">
               <div class="preview-info">
                 <i class="fa-solid fa-circle-check"></i>
@@ -271,7 +253,6 @@
           </div>
         </div>
 
-        <!-- Referral Program -->
         <div class="glass-panel referral-panel">
           <div class="panel-title">
             <i class="fa-solid fa-share-nodes"></i>
@@ -284,18 +265,17 @@
           </div>
         </div>
 
-        <!-- Live Activity feed -->
         <div class="glass-panel activities-panel">
           <div class="panel-title">
             <i class="fa-solid fa-bolt"></i>
             <span>Live Network Activity</span>
           </div>
           <div class="activity-list" id="activity-feed-container">
-            <!-- Items populated by JS -->
-          </div>
+            </div>
         </div>
+      </aside>
+    </div>
 
-    <!-- --- FOOTER WARNING NOTICE --- -->
     <footer class="glass-panel warning-footer" style="animation: slide-up 0.8s ease;">
       <div class="warning-header">
         <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
@@ -309,7 +289,6 @@
 
   </div>
 
-  <!-- Main JavaScript File -->
   <script src="app.js"></script>
 </body>
 </html>
